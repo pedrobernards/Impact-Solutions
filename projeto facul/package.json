@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
+  },
+  "name": "projeto-green-organizer",
+  "description": "Projeto de Programação Orientada a Objetos.",
+  "version": "1.0.0",
+  "main": "esqueceu-senha.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

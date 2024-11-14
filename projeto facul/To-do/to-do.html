@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="to-do.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/regular.css">
+
+
+
+
+    <link rel="icon" href="/faculdade/img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,400;0,600;1,200;1,700;1,900&family=Poppins:ital,wght@0,200;0,500;1,100;1,200;
+1,300;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Lista de tarefas</title>
+
+</head>
+
+<body>
+    <header>
+        <a href="/faculdade/index.html" class="logo"><img src="/faculdade/img/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a href="/faculdade/index.html">Home</a></li>
+            <li><a href="/faculdade/contato.html">Contato</a></li>
+            <li><a href="/faculdade/documentos.html">Documentos</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <a href="../src/login.html"><i class="fa-solid fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-sitemap"></i></a>
+
+            <div class="fa-solid fa-bars" id="menu-icon"></div>
+
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <h1>Tarefas</h1>
+            <input type="text" id="taskInput" placeholder="Adicione uma tarefa...">
+            <!--<input type="text" id="tagInput" placeholder="Insira uma tag">-->
+            <button class="btn-add" onclick="addTask()">Adicionar</button>
+            <ul id="taskList"></ul>
+        </div>
+
+    </section>
+    <script src="to-do.js"></script>
+
+</body>
+
+</html>

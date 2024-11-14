@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="/faculdade/estilo.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/faculdade/fontawesome/css/regular.css">
+    <link rel="icon" href="/faculdade/img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,400;0,600;1,200;1,700;1,900&family=Poppins:ital,wght@0,200;0,500;1,100;1,200;
+1,300;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Lista de tarefas</title>
+</head>
+
+<body>
+    <header>
+        <a href="/faculdade/index.html" class="logo"><img src="/faculdade/img/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a href="/faculdade/index.html">Home</a></li>
+            <li><a href="/To-do/to-do.html">Serviços</a></li>
+            <li><a href="/faculdade/teste.html">Prototipagem</a></li>
+            <li><a href="#">Outros Produtos</a></li>
+            <li><a href="/faculdade/documentos.html">Documentos</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <a href="../src/login.html"><i class="fa-solid fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-sitemap"></i></a>
+
+            <div class="fa-solid fa-bars" id="menu-icon"></div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <h1>Tarefas</h1>
+            <input type="text" id="taskInput" placeholder="Adicione uma tarefa...">
+            <input type="text" id="tagInput" placeholder="Insira uma tag">
+            <button class="btn-add" onclick="addTask()">Adicionar</button>
+            <ul id="taskList"></ul>
+        </div>
+
+    </section>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const tagInput = document.getElementById('tagInput');
+            const taskList = document.getElementById('taskList');
+
+            const taskText = taskInput.value.trim();
+            const tagText = tagInput.value.trim();
+
+            if (taskText === '' || tagText === '') {
+                alert('Por favor, insira uma tarefa e uma tag.');
+                return;
+            }
+
+            // Check if the tag already exists
+            let tagItem = document.getElementById(tagText);
+            if (!tagItem) {
+                // Create new tag item
+                tagItem = document.createElement('li');
+                tagItem.id = tagText;
+
+                // Create a span to hold the tag name
+                const tagSpan = document.createElement('span');
+                tagSpan.textContent = tagText;
+                tagSpan.style.fontWeight = 'bold';
+
+                // Create a button to rename the tag
+                const renameButton = document.createElement('button');
+                renameButton.textContent = 'Renomear';
+                renameButton.onclick = function () {
+                    renameTag(tagText);
+                };
+
+                // Create a button to mark the tag as done
+                const doneButton = document.createElement('button');
+                doneButton.textContent = 'Concluído';
+                doneButton.onclick = function () {
+                    markTagAsDone(tagText);
+                };
+
+                // Create a button to remove the tag
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Remover';
+                deleteButton.onclick = function () {
+                    removeTag(tagText);
+                };
+
+                // Append elements to the tag item
+                tagItem.appendChild(tagSpan);
+                tagItem.appendChild(renameButton);
+                tagItem.appendChild(doneButton);
+                tagItem.appendChild(deleteButton);
+
+                // Append the tag item to the task list
+                taskList.appendChild(tagItem);
+            }
+
+            // Create new task textbox
+            const taskTextbox = document.createElement('input');
+            taskTextbox.type = 'text';
+            taskTextbox.value = taskText;
+            taskTextbox.readOnly = true;
+
+            // Add the task textbox to the tag item
+            tagItem.appendChild(taskTextbox);
+
+            taskInput.value = '';
+            tagInput.value = '';
+        }
+
+        function removeTag(tagId) {
+            const tagItem = document.getElementById(tagId);
+            if (tagItem) {
+                tagItem.remove();
+            }
+        }
+
+        function renameTag(tagId) {
+            const tagItem = document.getElementById(tagId);
+            if (tagItem) {
+                const newTagName = prompt('Digite o novo nome da tag:');
+                if (newTagName) {
+                    tagItem.id = newTagName;
+                    tagItem.querySelector('span').textContent = newTagName;
+                }
+            }
+        }
+
+        function markTagAsDone(tagId) {
+            const tagItem = document.getElementById(tagId);
+            if (tagItem) {
+                tagItem.style.textDecoration = 'line-through';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
